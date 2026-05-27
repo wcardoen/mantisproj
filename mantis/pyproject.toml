@@ -1,0 +1,74 @@
+[project]
+name = "mantis"
+version = "0.1.0"
+description = "A Foundation Model for Mechanistic Disease Forcasting" 
+readme = "README.md"
+authors = [
+    { name = "Wim R.M. Cardoen", email = "wcardoen@gmail.com" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.14,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.uv_build]
+packages = ["src/mantis"]
+
+[project.optional-dependencies]
+cpu   = ["torch>=2.0"]
+cu121 = ["torch>=2.0"]
+cu124 = ["torch>=2.0"]
+cu126 = ["torch>=2.0"]
+cu128 = ["torch>=2.0"]
+cu130 = ["torch>=2.0"]
+cu132 = ["torch>=2.0"]
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cpu",   extra = "cpu"   },
+  { index = "pytorch-cu121", extra = "cu121" },
+  { index = "pytorch-cu124", extra = "cu124" },
+  { index = "pytorch-cu126", extra = "cu126" },
+  { index = "pytorch-cu128", extra = "cu128" },
+  { index = "pytorch-cu130", extra = "cu130" },
+  { index = "pytorch-cu132", extra = "cu132" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url  = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu121"
+url  = "https://download.pytorch.org/whl/cu121"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url  = "https://download.pytorch.org/whl/cu124"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url  = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url  = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url  = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu132"
+url  = "https://download.pytorch.org/whl/cu132"
+explicit = true
