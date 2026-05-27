@@ -1,8 +1,13 @@
 library(rmantis)
 
+PYTHONEXE <- "/home/sleipnir/Devel/python/mypy/.venv/bin/python3"
+
+
+mantis_setup_python(PYTHONEXE)
 cudaCheck <- function(){
 
     library(reticulate)
+         
     # Import the Python torch library
     torch <- import("torch")
 
@@ -13,7 +18,7 @@ cudaCheck <- function(){
         num_devices = torch$cuda$device_count()
         cat(sprintf("  #GPU devices found:%d\n", num_devices))
         for(idevice in seq(from=0,to=(num_devices-1))){
-            cat(sprintf("    Device:%d -> %s\n", idevice, 
+            cat(sprintf("  Device:%d -> %s\n", idevice, 
             torch$cuda$get_device_name(as.integer(idevice)))) 
         }
     }else{
@@ -32,7 +37,6 @@ hasCuda <- cudaCheck()
 # ------
 # Input: Directory where the models where stored
 model_dir = "../models"
-
 input_file = "../data/example.csv"
 
 cat(sprintf("Input data:\n"))
@@ -52,12 +56,13 @@ head(mydf)
 debug <- F
 mat <- rmantis::mantis_forecast(time_series = mydf$hospitalizationCount,
                        model_dir = model_dir,   # NEW <-- REQUIRED
+		       python_exe = PYTHONEXE,  # NEW <-- REQUIRED
                        target_type = 1L,        # 0 = cases, 1 = hosp, 2 = deaths
                        horizon = 4L,
                        use_covariate = FALSE,
 		       device = device,
                        debug=debug) 
-cat(sprintf("Results::\n"))
+cat(sprintf("\nResults::\n"))
 print(mat)
 
 te <- Sys.time()

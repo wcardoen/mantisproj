@@ -2,4 +2,5 @@
 
 export(mantis_download_weights)
 export(mantis_forecast)
+export(mantis_setup_python)
 importFrom(utils,download.file)

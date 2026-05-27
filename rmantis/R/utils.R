@@ -1,3 +1,25 @@
+#' Sets the Python executable
+#'
+#' @param exe Character. Path to the Python executable to use.
+#' @return Invisibly returns the reticulate Python config list on success.
+#' @keywords internal
+mantis_setup_python <- function(exe) {
+  if (!is.character(exe) || nchar(trimws(exe)) == 0) {
+    stop("'exe' must be a non-empty character string.", call. = FALSE)
+  }
+  if (!file.exists(exe)) {
+    stop(
+      "Python executable not found at: ", exe, "\n",
+      "Please provide a valid path to a Python binary.",
+      call. = FALSE
+    )
+  }
+  reticulate::use_python(exe, required = TRUE)
+  invisible(reticulate::py_config())
+}
+
+
+
 #' Check that Python and the mantis module are available
 #'
 #' Validates that a Python executable exists in the current reticulate
@@ -8,7 +30,7 @@
 #'
 #' @return Invisibly returns the reticulate Python config list on success.
 #' @keywords internal
-rmantis_check_python <- function() {
+mantis_check_python <- function() {
   cfg <- reticulate::py_config()
 
   if (!file.exists(cfg$python)) {
