@@ -32,6 +32,7 @@ Let `DIR` be installation directory
     + `cu126`: `uv add "mantismod[cu126] @ git+https://github.com/wcardoen/mantisproj.git#subdirectory=mantismod"`
     + `cu128`: `uv add "mantismod[cu128] @ git+https://github.com/wcardoen/mantisproj.git#subdirectory=mantismod"`
     + `cpu`: `uv add "mantismod[cpu] @ git+https://github.com/wcardoen/mantisproj.git#subdirectory=mantismod"`
+- `uv add pandas`  # Pandas (for subsequent testing)
 
 The `python` executable can be invoked into 2 different ways:
 
