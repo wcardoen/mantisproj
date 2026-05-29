@@ -1,10 +1,10 @@
 #' rmantismod: modifieds mantis (GPU)
 #'
-#' This is a modified version of rmantis.
-#' It has GPU support for 1 CUDA device.
+#' This is a modified version of rmantis which relies on mantismod.
+#' It has GPU support for 1 CUDA device (Besides CPU support).
 #'
 #' @section Main functions:
-#' The core functions of `mantismod` are:
+#' The core functions of `rmantismod` are:
 #' \itemize{
 #'   \item \code{\link{mantis_cudacheck}} - Checks CUDA availability and lists GPU devices
 #'   \item \code{\link{mantis_download_weights}} - Downloads the weights 
@@ -24,7 +24,7 @@
 #' Wim R.M. Cardoen \email{wcardoen@gmail.com}
 #'
 #' @references
-#' Any papers, books, or URLs your package is based on.
+#' Paper:[Mantis: A Foundation Model for Mechanistic Disease Forecasting](https://arxiv.org/abs/2508.12260)
 #'
 #' @keywords internal
 "_PACKAGE"

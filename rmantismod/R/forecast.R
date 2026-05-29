@@ -1,7 +1,7 @@
-#' Forecast with Mantis
+#' Forecast with (modified) Mantis
 #'
 #' Runs the Mantis deep-learning forecast model on a numeric time series,
-#' optionally using a covariate series. Python and the \code{mantis} module
+#' optionally using a covariate series. Python and the \code{mantismod} module
 #' are validated before any calls are made via \code{mantis_check_python()}.
 #'
 #' @param time_series Numeric vector of observed counts (required).
@@ -77,7 +77,7 @@ mantis_forecast <- function(time_series,
   if (debug) cat(sprintf("device           : %s\n", device))
 
   # --- Run forecast -----------------------------------------------------------
-  mantis <- reticulate::import("mantis")
+  mantis <- reticulate::import("mantismod")
 
   if (debug) cat("Creating Mantis model object ...\n")
   model <- mantis$Mantis(
